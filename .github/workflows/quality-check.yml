@@ -21,7 +21,7 @@ jobs:
         run: npm install
 
       - name: Run lint
-        run: npm run lint
+        run: npm run lint -- -f json -o eslint-report.json
 
       - name: Run tests
         run: npm test
@@ -31,6 +31,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: quality-report
-          path: |
-            *.log
+          path: eslint-report.json
           if-no-files-found: ignore
